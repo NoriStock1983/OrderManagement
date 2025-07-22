@@ -1,1 +1,67 @@
 
+name: Python Code Quality
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main, develop ]
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ['3.13.2']  # 必要に応じて複数バージョンを追加可能
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v4
+      with:
+        python-version: ${{ matrix.python-version }}
+    
+    - name: Cache pip dependencies
+      uses: actions/cache@v3
+      with:
+        path: ~/.cache/pip
+        key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements*.txt') }}
+        restore-keys: |
+          ${{ runner.os }}-pip-
+    
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        # 静的解析ツールをインストール
+        pip install flake8
+    
+    # flake8による静的解析
+    - name: Run flake8
+      run: |
+        # デフォルト設定で実行（設定ファイルがある場合は自動で読み込まれる）
+        flake8 . --count --show-source --statistics
+    
+    # 将来のツール追加用のプレースホルダー（コメントアウト状態）
+    # - name: Run black (code formatting check)
+    #   run: |
+    #     pip install black
+    #     black --check --diff .
+    
+    # - name: Run mypy (type checking)
+    #   run: |
+    #     pip install mypy
+    #     mypy .
+    
+    # - name: Run bandit (security check)
+    #   run: |
+    #     pip install bandit
+    #     bandit -r . -f json -o bandit-report.json || true
+    
+    # - name: Upload bandit results
+    #   if: always()
+    #   uses: actions/upload-artifact@v3
+    #   with:
+    #     name: bandit-results
+    #     path: bandit-report.json
