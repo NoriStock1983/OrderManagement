@@ -8,7 +8,7 @@ on:
     branches: [ main, develop ]
 
 jobs:
-  lint:
+  lint_Static_Analysis:
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -60,9 +60,9 @@ jobs:
         pip install bandit
         bandit -r . -f json -o bandit-report.json || true
     
-    #- name: Upload bandit results
-    #  if: always()
-    #  uses: actions/upload-artifact@v3
-    #  with:
-    #    name: bandit-results
-    #    path: bandit-report.json
+    - name: Upload bandit results
+      if: always()
+      uses: actions/upload-artifact@v3
+      with:
+        name: bandit-results
+        path: bandit-report.json
