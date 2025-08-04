@@ -49,10 +49,11 @@ jobs:
          pip install black
          black --check --diff .
     
-    # - name: Run mypy (type checking)
-    #   run: |
-    #     pip install mypy
-    #     mypy .
+    - name: Run mypy (type checking)
+            # 静的型チェック
+      run: |
+         pip install mypy
+         mypy .
     
     - name: Run bandit (security check)
       run: |
