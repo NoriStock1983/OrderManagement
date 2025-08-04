@@ -16,7 +16,7 @@ class UpdateCounter:
         if value < 0:
             raise ValueError("更新カウンタは0以上である必要があります")
 
-    def increment(self) -> 'UpdateCounter':
+    def increment(self) -> "UpdateCounter":
         """更新カウンタをインクリメントした新しいインスタンスを返す"""
         return UpdateCounter(self._value + 1)
 

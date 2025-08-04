@@ -44,10 +44,10 @@ jobs:
         flake8 . --count --show-source --statistics
     
     # 将来のツール追加用のプレースホルダー（コメントアウト状態）
-    # - name: Run black (code formatting check)
-    #   run: |
-    #     pip install black
-    #     black --check --diff .
+    - name: Run black (code formatting check)
+      run: |
+         pip install black
+         black --check --diff .
     
     # - name: Run mypy (type checking)
     #   run: |

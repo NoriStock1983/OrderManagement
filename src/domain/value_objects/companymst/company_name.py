@@ -1,7 +1,7 @@
 class CompanyName:
     """会社名の値オブジェクト"""
 
-    FORBIDDEN_CHARS = ['<', '>', '&', '"', "'"]
+    FORBIDDEN_CHARS = ["<", ">", "&", '"', "'"]
 
     def __init__(self, value: str):
         self._validate(value)

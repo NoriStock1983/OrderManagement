@@ -3,7 +3,7 @@ class SubcontractClass:
 
     SELF_COMPANY = "00"  # 自社
     SUBCONTRACT = "01"  # 外注
-    PARTNER = "02"      # 協力会社
+    PARTNER = "02"  # 協力会社
 
     ALLOWED_VALUES = [SELF_COMPANY, SUBCONTRACT, PARTNER]
 

@@ -4,14 +4,14 @@ from .companymst import (
     CompanyShortName,
     SubcontractClass,
     UserId,
-    UpdateCounter
+    UpdateCounter,
 )
 
 __all__ = [
-    'CompanyCode',
-    'CompanyName',
-    'CompanyShortName',
-    'SubcontractClass',
-    'UserId',
-    'UpdateCounter'
+    "CompanyCode",
+    "CompanyName",
+    "CompanyShortName",
+    "SubcontractClass",
+    "UserId",
+    "UpdateCounter",
 ]

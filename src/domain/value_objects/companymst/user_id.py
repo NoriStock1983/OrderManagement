@@ -19,7 +19,7 @@ class UserId:
         if not isinstance(value, str):
             raise TypeError("作成者/更新者は文字列である必要があります")
 
-        if not re.match(r'^[A-Za-z0-9]{1,8}$', value):
+        if not re.match(r"^[A-Za-z0-9]{1,8}$", value):
             raise ValueError("作成者/更新者は半角英数字8文字以内である必要があります")
 
     def __eq__(self, other) -> bool:
